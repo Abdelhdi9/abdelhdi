@@ -1,135 +1,148 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة عبد الهادي الاحترافية</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        /* الخلفية المتحركة */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: Arial, sans-serif;
-            color: #fff;
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صفحة عبد الهادي</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    /* الخلفية المتحركة */
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(-45deg, #0d0d0d, #1a1a1a, #2e2e2e, #111111);
+        background-size: 400% 400%;
+        animation: gradientBG 30s ease infinite;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        text-align: center;
+        overflow-x: hidden;
+    }
 
-        video#bg-video {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
-            object-fit: cover;
-            filter: brightness(0.5);
-        }
+    @keyframes gradientBG {
+        0% {background-position:0% 50%;}
+        50% {background-position:100% 50%;}
+        100% {background-position:0% 50%;}
+    }
 
-        header {
-            text-align: center;
-            padding: 60px 20px 20px 20px;
-        }
+    h1 {
+        font-size: 3rem;
+        margin-top: 2rem;
+        text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+    }
 
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: #ccc;
-        }
+    /* أيقونات التواصل الاجتماعي */
+    .social-icons {
+        margin-top: 1rem;
+        display: flex;
+        gap: 25px;
+        justify-content: center;
+    }
 
-        header p {
-            font-size: 1.2rem;
-            color: #aaa;
-        }
+    .social-icons a {
+        color: #fff;
+        font-size: 2.5rem;
+        position: relative;
+        transition: all 0.4s ease;
+    }
 
-        /* أيقونات مواقع التواصل */
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-            gap: 20px;
-        }
+    .social-icons a::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        bottom: -5px;
+        left: 0;
+        background: #ffcc00;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        transform-origin: right;
+    }
 
-        .social-icons a {
-            color: #fff;
-            font-size: 2rem;
-            transition: transform 0.3s, color 0.3s;
-        }
+    .social-icons a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
 
-        .social-icons a:hover {
-            transform: scale(1.3);
-            color: #1e90ff;
-        }
+    .social-icons a:hover {
+        color: #ffcc00;
+        transform: scale(1.3);
+    }
 
-        /* معرض الصور */
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px;
-        }
+    /* معرض الصور */
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 3rem;
+        gap: 15px;
+        max-width: 1200px;
+        padding: 0 1rem;
+    }
 
-        .gallery img {
-            width: 250px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
+    .gallery img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+        transition: transform 0.4s, box-shadow 0.4s;
+        cursor: pointer;
+    }
 
-        .gallery img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px #1e90ff;
-        }
+    .gallery img:hover {
+        transform: scale(1.1) rotate(2deg);
+        box-shadow: 0 0 25px rgba(255, 204, 0, 0.8);
+    }
 
-        /* استجابة الهاتف */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-            header p {
-                font-size: 1rem;
-            }
-            .gallery img {
-                width: 45%;
-                height: auto;
-            }
-        }
-    </style>
+    /* فيديو خلفية */
+    .bg-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        opacity: 0.25;
+        filter: brightness(0.4) contrast(1.2);
+    }
+
+    /* استجابة الهواتف */
+    @media (max-width: 768px) {
+        h1 { font-size: 2rem; }
+        .social-icons a { font-size: 2rem; }
+        .gallery img { width: 120px; height: 120px; }
+    }
+</style>
 </head>
 <body>
-    <!-- خلفية فيديو متحركة -->
-    <video autoplay muted loop id="bg-video">
-        <source src="https://cdn.pixabay.com/vimeo/655541725/abstract-17583.mp4" type="video/mp4">
-        متصفحك لا يدعم الفيديو.
-    </video>
 
-    <header>
-        <h1>مرحبا بكم في صفحة عبد الهادي</h1>
-        <p>تابعني على مواقع التواصل واستمتع بالمحتوى</p>
+<!-- فيديو الخلفية -->
+<video class="bg-video" autoplay muted loop>
+    <source src="https://www.videvo.net/videvo_files/converted/2016_12/preview/160408_Walk_03.mp464636.mp4" type="video/mp4">
+</video>
 
-        <div class="social-icons">
-            <a href="https://www.tiktok.com/@abdelhdi_barkati" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" width="40">
-            </a>
-            <a href="https://www.instagram.com/abdelhdi_2008/" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="40">
-            </a>
-            <a href="https://www.facebook.com/share/19oFs9f5Q1/" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="40">
-            </a>
-        </div>
-    </header>
+<h1>مرحبا بكم في صفحة عبد الهادي</h1>
 
-    <!-- معرض الصور -->
-    <section class="gallery">
-        <img src="https://picsum.photos/400/250?random=1" alt="صورة 1">
-        <img src="https://picsum.photos/400/250?random=2" alt="صورة 2">
-        <img src="https://picsum.photos/400/250?random=3" alt="صورة 3">
-        <img src="https://picsum.photos/400/250?random=4" alt="صورة 4">
-    </section>
+<div class="social-icons">
+    <a href="https://www.tiktok.com/@abdelhdi_barkati" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/abdelhdi_2008/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/share/19oFs9f5Q1/" target="_blank"><i class="fab fa-facebook"></i></a>
+</div>
+
+<div class="gallery">
+    <img src="https://via.placeholder.com/200" alt="صورة 1">
+    <img src="https://via.placeholder.com/200" alt="صورة 2">
+    <img src="https://via.placeholder.com/200" alt="صورة 3">
+    <img src="https://via.placeholder.com/200" alt="صورة 4">
+    <img src="https://via.placeholder.com/200" alt="صورة 5">
+</div>
+
 </body>
 </html>
+
